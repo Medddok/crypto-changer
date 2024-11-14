@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О компании</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Навигационная панель -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="logo.png" alt="Логотип компании" class="logo-img">
+        </div>
+    </div>
+
+    <!-- Основное содержание страницы -->
+    <div class="table-container">
+        <h1>Контактная информация</h1>
+
+        <!-- О компании -->
+        <p>
+            Мы предоставляем услуги и консультации в сфере криптовалют и блокчейн-технологий, помогая клиентам 
+            безопасно и выгодно управлять своими цифровыми активами.
+        </p>
+
+        <!-- Раздел с контактами -->
+        <div style="margin-top: 20px;">
+            <h2>Наши контакты</h2>
+            <ul style="list-style-type: none; padding: 0;">
+                <li><strong>Горячая линия:</strong> +1 (800) 123-****</li>
+                <li><strong>Отдел поддержки клиентов:</strong> +1 (800) 456-****</li>
+                <li><strong>Финансовый отдел:</strong> +1 (800) 789-****</li>
+                <li><strong>Email для обращений:</strong> support@cryptocompany.com</li>
+            </ul>
+        </div>
+
+        <!-- Часы работы -->
+        <div style="margin-top: 20px;">
+            <h2>Часы работы службы поддержки</h2>
+            <p>Понедельник - Пятница: 09:00 - 18:00</p>
+            <p>Суббота: 10:00 - 16:00</p>
+            <p>Воскресенье: Выходной</p>
+        </div>
+
+        <!-- Кнопка "Назад" -->
+        <button onclick="history.back()" style="padding: 10px 20px; background-color: #333; color: #e0e0e0; border: none; cursor: pointer; border-radius: 5px; margin-top: 20px;">
+            Назад
+        </button>
+    </div>
+</body>
+</html>

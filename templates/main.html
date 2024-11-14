@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crypto Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Навигационная панель -->
+    <div class="navbar">
+        <!-- Кнопка для открытия меню слева -->
+        <button class="menu-btn" id="menu-btn">☰</button>
+        
+        <!-- Логотип компании по центру -->
+        <a href="/" class="logo">
+            <img src="{{ url_for('static', filename='images/company-logo.png') }}" alt="Company Logo" class="logo-img">
+        </a>
+        
+        <!-- Логотип пользователя справа -->
+        <a href="{{ url_for('profile') }}" class="user-icon">
+            <img src="{{ url_for('static', filename='images/user-icon.png') }}" alt="User Icon" class="user-icon-img">
+        </a>
+        
+        <!-- Выпадающее меню -->
+        <div class="dropdown" id="dropdown-menu">
+            <a href="{{ url_for('info') }}">Information</a>
+            <a href="{{ url_for('about') }}">About Us</a>
+            <button class="close-btn" id="close-menu">✖</button>
+        </div>
+    </div>
+
+    <!-- Таблица криптовалют -->
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Cryptocurrency</th>
+                    <th>Price (USD)</th>
+                    <th>24h Change</th>
+                    <th>Market Cap (USD)</th>
+                </tr>
+            </thead>
+            <tbody id="crypto-table-body">
+                {% for crypto in crypto_data %}
+                <tr>
+                    <td>{{ crypto.name }} ({{ crypto.symbol }})</td>
+                    <td>${{ crypto.price | round(2) }}</td>
+                    <td class="change {{ 'positive' if crypto.percent_change_24h > 0 else 'negative' }}">
+                        {{ crypto.percent_change_24h | round(2) }}%
+                    </td>
+                    <td>${{ crypto.market_cap | int | tojson }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Скрипт для управления открытием и закрытием меню
+        document.getElementById('menu-btn').addEventListener('click', function() {
+            document.getElementById('dropdown-menu').style.display = 'block';
+        });
+        document.getElementById('close-menu').addEventListener('click', function() {
+            document.getElementById('dropdown-menu').style.display = 'none';
+        });
+    </script>
+</body>
+</html>
